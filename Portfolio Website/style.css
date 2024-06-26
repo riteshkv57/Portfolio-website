@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family-Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
 
 *{
     padding: 0;
@@ -40,7 +42,7 @@
     /* margin-left: 0rem; */
     font-size: 50px;
     font-weight: 800;
-    color: rgb(43, 0, 255);
+    color: rgb(214, 35, 249);
 
 }
 
@@ -60,7 +62,7 @@
 
 .nav-items div{
     font-size: 20px;
-    font-weight: 900;
+    font-weight: 600;
     cursor: pointer;
 }
 
@@ -73,8 +75,9 @@ a{
 }
 
 .nav-items div:hover{
-    font-weight: bold;
-    transition: all 2s;
+    /* font-weight: bold; */
+    scale: 1.1;
+    transition: all 1.5s;
 }
 
 .hero-section{
@@ -181,39 +184,45 @@ a{
     color: white;
 }
 
-.box{
-    background-color: rgb(249, 110, 17);
+.box {
+    background-color: #ae35de; /* Tomato color */
     width: 30%;
-    /* height: 30%; */
-   
     padding: 0.8rem 2.3rem;
-    color: rgb(0, 0, 0);
+    color: #ffffff; /* White text */
     font-size: 18px;
     font-weight: 800;
-    box-shadow: 5px 5px 7px 0px rgb(0, 255, 8);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
     position: relative;
     z-index: 1;
     cursor: pointer;
-    border-radius: 5cap;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+    overflow: hidden; /* Ensure pseudo-element stays within bounds */
 }
 
-.box::before{
+.box::before {
     content: "";
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent white */
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: scaleY(0);
-    transform-origin:left;
-    transition: 0.9s;
-    z-index: -10;
-    border-radius: 5cap;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease, left 0.5s ease; /* Smooth transition for transform and position */
+    z-index: -1;
+    transform: skewX(-30deg); /* Skew effect */
+    border-radius: inherit; /* Inherit border radius */
 }
 
-.box:hover::before{
-    transform: scaleX(1);
+.box:hover {
+    background-color: #ff4500; /* Darker Tomato on hover */
+    color: #ffffff; /* Keep text white */
+}
+
+.box:hover::before {
+    left: 100%;
+    transform: skewX(0deg); /* Reset skew */
+    background-color: rgba(255, 255, 255, 0.3); /* Increase transparency */
 }
 
 .hero-section-right{
@@ -224,19 +233,32 @@ a{
     position: absolute;
 }
 
-.userimage{
-    padding: 1rem;
-    /* filter: grayscale(1); */
-    
-    transition: all 0.3s;
-    animation: scaleImage 5s linear infinite;
+.userimage {
+    position: relative;
+    width: 450px; /* Adjust as needed */
+    height: 450px; /* Adjust to maintain a square shape for the circle */
+    overflow: hidden;
+    border-radius: 50%; /* Makes the container circular */
+    transition: transform 0.5s ease;
+    margin: 0 auto; /* Center the circle horizontally */
 }
 
-.user-image img{
-    z-index: -90;
-    height: 2000px;
-    width: 20px;
+.userimage img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.4); /* Center and slightly enlarge the image */
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.5s ease;
 }
+
+.userimage:hover img {
+    transform: translate(-50%, -50%) scale(1.8); /* Scale up on hover */
+}
+
 
 @keyframes scaleImage{
     0%{
@@ -263,118 +285,6 @@ a{
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-}
-
-@keyframes dotsAnimation{
-    0%{
-        transform: translateY(0px);
-    }
-    50%{
-        transform: translateY(-15px);
-        
-    }
-    100%{
-        transform: translateY(0px);
-      
-    }
-}
-
-.icon-cube{
-    z-index:9;
-    top: -1rem;
-    right: 0;
-    animation-name: cubeAnimation;
-    animation-duration: 6s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-@keyframes cubeAnimation{
-    0%{
-        transform: translateY(0px);
-    }
-    50%{
-        transform: translateY(-15px);
-        rotate: 360deg;
-        
-    }
-    100%{
-        transform: translateY(0px);
-        rotate: 0deg;
-      
-    }
-}
-
-.icon-circle{
-    z-index:9;
-    bottom: -1rem;
-    left: 0;
-    animation-name: circleAnimation;
-    animation-duration: 4s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-@keyframes circleAnimation{
-    0%{
-        bottom: 0;
-        left: 0;
-    }
-    50%{
-        bottom: 10%;
-        left: 5%;
-    }
-    100%{
-        bottom: 0;
-        left: 0;
-    }
-}
-
-.icon-zigzags{
-    z-index:9;
-    top: 1rem;
-    left: 0;
-    animation-name: zigzagAnimation;
-    animation-duration: 6s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-@keyframes zigzagAnimation{
-    0%{
-        bottom: 0;
-        left: 0;
-    }
-    50%{
-        bottom: 10%;
-        left: 5%;
-    }
-    100%{
-        bottom: 0;
-        left: 0;
-    }
-}
-
-.icon-plus{
-    z-index:9;
-    top:-0.8rem;
-    left: 50%;
-    animation-name: plusAnimation;
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-@keyframes plusAnimation{
-    0%{
-        transform: translateY(0px);
-    }
-    50%{
-        transform: translateY(-15px);
-    }
-    100%{
-        transform: translateY(0px);
-    }
 }
 
 .project-section{
@@ -800,6 +710,80 @@ a{
     .caps{
         font-size: 8px;
     }
+}
+
+/* Contact Section */
+.contact-details {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.page-header {
+    font-size: 2.5rem;
+    color: #ff6347;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Contact Form */
+.contact-form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #ff6347;
+    outline: none;
+}
+
+/* Button */
+.btn-primary {
+    background-color: #ff6347;
+    color: #ffffff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ff4500;
+    transform: translateY(-2px);
 }
 
 
