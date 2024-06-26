@@ -227,27 +227,30 @@ a{
 .userimage{
     padding: 1rem;
     /* filter: grayscale(1); */
+    
     transition: all 0.3s;
     animation: scaleImage 5s linear infinite;
 }
 
 .user-image img{
     z-index: -90;
+    height: 2000px;
+    width: 20px;
 }
 
 @keyframes scaleImage{
     0%{
         /* filter: grayscale(0.5); */
-        transform: scale(1);
+        transform: scale(0.9);
     }
     50%{
-        transform: scale(1.2);
+        transform: scale(1);
         /* filter: grayscale(0); */
         
     }
     100%{
-        box-shadow: 3px 3px 3px 3px rgb(223, 19, 189);
-        transform: scale(1);
+        /* box-shadow: 3px 3px 3px 3px rgb(223, 19, 189); */
+        transform: scale(0.9);
         /* filter: grayscale(0.5); */
     }
 }
@@ -641,7 +644,7 @@ a{
     color: white;
 }
 
-@media(max-width:600px){
+@media(max-width:392px){
     *{
         padding: 0;
         margin: 0;
